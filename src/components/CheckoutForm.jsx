@@ -117,7 +117,6 @@ function CheckoutForm({ cart, onBackToMenu, onClearCart }) {
     return (
       <section className="checkout-success" aria-live="polite">
         <div className="receipt-box">
-          <div className="receipt-icon">✓</div>
           <h2>Order Confirmed!</h2>
           <p className="receipt-code">Order #{orderConfirmed.orderId}</p>
           <p className="receipt-time">Placed at {orderConfirmed.date}</p>
@@ -127,7 +126,7 @@ function CheckoutForm({ cart, onBackToMenu, onClearCart }) {
             <ul>
               {orderConfirmed.items.map((item) => (
                 <li key={item.id} className="receipt-line">
-                  <span>{item.name} × {item.qty}</span>
+                  <span>{item.name} Ã— {item.qty}</span>
                   <strong>{item.price * item.qty} ETB</strong>
                 </li>
               ))}
@@ -194,7 +193,7 @@ function CheckoutForm({ cart, onBackToMenu, onClearCart }) {
           className="checkout-back-nav"
           onClick={onBackToMenu}
         >
-          ← Back to Menu
+          â† Back to Menu
         </button>
         <h2>The Addis Eats Checkout</h2>
       </div>
@@ -342,7 +341,7 @@ function CheckoutForm({ cart, onBackToMenu, onClearCart }) {
               <div key={item.id} className="summary-item-row">
                 <div className="summary-item-title">
                   <span>{item.name}</span>
-                  <small>Qty: {item.qty} × {item.price} ETB</small>
+                  <small>Qty: {item.qty} Ã— {item.price} ETB</small>
                 </div>
                 <strong>{item.qty * item.price} ETB</strong>
               </div>

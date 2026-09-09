@@ -6,7 +6,7 @@
 
 body {
   font-family: Arial, Helvetica, sans-serif;
-  background-color: #fdfbf7;
+  background-color: #adaba8;
   color: #222;
   line-height: 1.5;
 }
@@ -27,26 +27,13 @@ body {
 }
 
 .navbar-brand {
-  display: flex;
-  align-items: center;
-  gap: 10px;
   cursor: pointer;
-}
-
-.brand-logo {
-  font-size: 26px;
 }
 
 .brand-title {
   font-size: 20px;
   font-weight: bold;
-  color: #d35400;
-}
-
-.brand-tagline {
-  font-size: 12px;
-  color: #777;
-  display: block;
+  color: #123a39;
 }
 
 .navbar-nav {
@@ -68,18 +55,15 @@ body {
 
 .nav-link:hover,
 .nav-link.active {
-  color: #d35400;
-  background: #fdf0e7;
+  color: #123a39;
+  background: #e8ecec;
 }
 
 .cart-btn {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  background: #d35400;
+  background: #fca265;
   color: #fff;
   border: none;
-  border-radius: 20px;
+  border-radius: 4px;
   padding: 8px 16px;
   font-size: 14px;
   font-weight: bold;
@@ -87,15 +71,7 @@ body {
 }
 
 .cart-btn:hover {
-  background: #b84300;
-}
-
-.cart-badge {
-  background: #fff;
-  color: #d35400;
-  border-radius: 50%;
-  font-size: 12px;
-  padding: 2px 7px;
+  background: #db9973;
 }
 
 .main-content {
@@ -119,7 +95,7 @@ body {
 
 .hero-text p {
   font-size: 15px;
-  color: #666;
+  color: #444;
   margin-bottom: 18px;
 }
 
@@ -134,19 +110,19 @@ body {
   background: #fff;
   border: 1px solid #ccc;
   padding: 7px 16px;
-  border-radius: 20px;
+  border-radius: 4px;
   font-size: 14px;
   cursor: pointer;
 }
 
 .category-tab:hover {
-  border-color: #d35400;
+  border-color: #123a39;
 }
 
 .category-tab.active {
-  background: #d35400;
+  background: #123a39;
   color: #fff;
-  border-color: #d35400;
+  border-color: #123a39;
   font-weight: bold;
 }
 
@@ -167,27 +143,6 @@ body {
   box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
 
-.dish-card-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 10px;
-}
-
-.dish-badge {
-  background: #fdf0e7;
-  color: #d35400;
-  font-size: 11px;
-  font-weight: bold;
-  padding: 2px 8px;
-  border-radius: 10px;
-}
-
-.dish-prep {
-  font-size: 12px;
-  color: #888;
-}
-
 .dish-title {
   font-size: 17px;
   color: #222;
@@ -196,7 +151,7 @@ body {
 
 .dish-category {
   font-size: 12px;
-  color: #888;
+  color: #777;
   margin-bottom: 8px;
 }
 
@@ -285,11 +240,17 @@ body {
 }
 
 .cart-panel-close {
-  background: none;
+  background: #eee;
   border: none;
-  font-size: 18px;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 13px;
+  color: #555;
   cursor: pointer;
-  color: #666;
+}
+
+.cart-panel-close:hover {
+  background: #ddd;
 }
 
 .cart-empty {
@@ -450,21 +411,18 @@ body {
   margin-bottom: 12px;
 }
 
-.dish-modal-badge {
-  background: #fdf0e7;
-  color: #d35400;
-  font-size: 12px;
-  font-weight: bold;
-  padding: 3px 8px;
-  border-radius: 10px;
+.dish-modal-close {
+  background: #eee;
+  border: none;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 13px;
+  color: #555;
+  cursor: pointer;
 }
 
-.dish-modal-close {
-  background: none;
-  border: none;
-  font-size: 18px;
-  color: #888;
-  cursor: pointer;
+.dish-modal-close:hover {
+  background: #ddd;
 }
 
 .dish-modal-content h2 {
@@ -474,8 +432,6 @@ body {
 }
 
 .dish-modal-meta {
-  display: flex;
-  gap: 14px;
   font-size: 13px;
   color: #777;
   margin-bottom: 12px;
@@ -606,7 +562,7 @@ body {
 .field-group input[type="text"]:focus,
 .field-group input[type="tel"]:focus,
 .field-group select:focus {
-  border-color: #d35400;
+  border-color: #123a39;
   outline: none;
 }
 
@@ -652,9 +608,9 @@ body {
 }
 
 .payment-pill.active {
-  border-color: #d35400;
-  background: #fdf0e7;
-  color: #d35400;
+  border-color: #123a39;
+  background: #e8ecec;
+  color: #123a39;
   font-weight: bold;
 }
 
@@ -750,23 +706,9 @@ body {
   text-align: center;
 }
 
-.receipt-icon {
-  width: 44px;
-  height: 44px;
-  background: #e8f5e9;
-  color: #2e7d32;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 22px;
-  font-weight: bold;
-  margin: 0 auto 10px;
-}
-
 .receipt-code {
   font-weight: bold;
-  color: #d35400;
+  color: #123a39;
   margin-top: 4px;
 }
 

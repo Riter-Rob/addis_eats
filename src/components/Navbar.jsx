@@ -4,11 +4,7 @@ function Navbar({ activeView, setActiveView, cartCount, onOpenCart }) {
   return (
     <header className="app-navbar">
       <div className="navbar-brand" onClick={() => setActiveView('menu')}>
-        <span className="brand-logo" role="img" aria-label="utensils">🍽️</span>
-        <div>
-          <span className="brand-title">Addis Eats</span>
-          <span className="brand-tagline">Fresh Ethiopian & City Favorites</span>
-        </div>
+        <span className="brand-title">Addis Eats</span>
       </div>
 
       <nav className="navbar-nav">
@@ -32,8 +28,7 @@ function Navbar({ activeView, setActiveView, cartCount, onOpenCart }) {
           onClick={onOpenCart}
           aria-label={`View cart with ${cartCount} items`}
         >
-          <span>Cart</span>
-          <span className="cart-badge">{cartCount}</span>
+          Cart ({cartCount})
         </button>
       </nav>
     </header>

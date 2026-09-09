@@ -61,7 +61,7 @@ function DishModal({ isOpen, dish, onClose, onAddToCart, triggerRef }) {
         onClick={(e) => e.stopPropagation()}
       >
         <div className="dish-modal-header">
-          <span className="dish-modal-badge">{dish.badge}</span>
+          <h2 id="dish-modal-title">{dish.name}</h2>
           <button
             ref={closeBtnRef}
             type="button"
@@ -69,17 +69,12 @@ function DishModal({ isOpen, dish, onClose, onAddToCart, triggerRef }) {
             onClick={onClose}
             aria-label="Close dialog"
           >
-            ✕
+            Close
           </button>
         </div>
 
         <div className="dish-modal-content">
-          <h2 id="dish-modal-title">{dish.name}</h2>
-          <p className="dish-modal-meta">
-            <span>Category: {dish.category}</span>
-            <span>Est. Prep: {dish.prepTime}</span>
-          </p>
-
+          <p className="dish-modal-meta">Category: {dish.category}</p>
           <p className="dish-modal-desc">{dish.description}</p>
           <div className="dish-modal-price">{dish.price} ETB</div>
         </div>
@@ -100,7 +95,7 @@ function DishModal({ isOpen, dish, onClose, onAddToCart, triggerRef }) {
             className="dish-modal-cancel-btn"
             onClick={onClose}
           >
-            Back to Menu
+            Cancel
           </button>
         </div>
       </div>

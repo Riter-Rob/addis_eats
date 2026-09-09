@@ -30,7 +30,7 @@ function CartDrawer({
             onClick={onClose}
             aria-label="Close cart"
           >
-            ✕
+            âœ•
           </button>
         </div>
 
