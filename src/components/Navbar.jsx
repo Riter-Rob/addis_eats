@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Navbar({ activeView, setActiveView, cartCount, onOpenCart }) {
+function Navbar({ activeView, setActiveView, cartCount, wishlistCount, onOpenCart }) {
   return (
     <header className="app-navbar">
       <div className="navbar-brand" onClick={() => setActiveView('menu')}>
@@ -14,6 +14,13 @@ function Navbar({ activeView, setActiveView, cartCount, onOpenCart }) {
           onClick={() => setActiveView('menu')}
         >
           Menu
+        </button>
+        <button
+          type="button"
+          className={activeView === 'wishlist' ? 'nav-link active' : 'nav-link'}
+          onClick={() => setActiveView('wishlist')}
+        >
+          Favorites ({wishlistCount})
         </button>
         <button
           type="button"

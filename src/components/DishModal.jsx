@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react'
 import { createPortal } from 'react-dom'
 
-function DishModal({ isOpen, dish, onClose, onAddToCart, triggerRef }) {
+function DishModal({ isOpen, dish, onClose, onAddToCart, triggerRef, onSelectDish }) {
   const modalRef = useRef(null)
   const closeBtnRef = useRef(null)
 
@@ -73,6 +73,10 @@ function DishModal({ isOpen, dish, onClose, onAddToCart, triggerRef }) {
           </button>
         </div>
 
+        {dish.image && (
+          <img src={dish.image} alt={dish.name} className="modal-dish-img" />
+        )}
+
         <div className="dish-modal-content">
           <p className="dish-modal-meta">Category: {dish.category}</p>
           <p className="dish-modal-desc">{dish.description}</p>
@@ -89,6 +93,16 @@ function DishModal({ isOpen, dish, onClose, onAddToCart, triggerRef }) {
             }}
           >
             Add to Order
+          </button>
+          <button
+            type="button"
+            className="dish-modal-detail-btn"
+            onClick={() => {
+              onClose()
+              onSelectDish(dish.id)
+            }}
+          >
+            Full Details
           </button>
           <button
             type="button"
