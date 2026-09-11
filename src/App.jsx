@@ -26,7 +26,7 @@ export default function App() {
     <ErrorBoundary>
       <AuthProvider>
         <CartProvider>
-          <BrowserRouter>
+          <BrowserRouter basename={import.meta.env.BASE_URL}>
             <Routes>
               {/* Nested routes under Layout with header, nav, Outlet, and footer */}
               <Route path="/" element={<Layout />}>
