@@ -17,7 +17,9 @@ export function Layout() {
         <div className="header-inner">
           <Link to="/" className="brand-logo" aria-label="Addis Eats Homepage">
             <span className="brand-badge-circle" aria-hidden="true">
-              🇪🇹
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <path d="M12 2c1.5 3 4 5.5 4 9a6 6 0 0 1-12 0c0-3.5 2.5-6 4-9 1 2 2 3 4 3s3-1 4-3z" fill="var(--color-gold)" stroke="var(--color-berbere)" />
+              </svg>
             </span>
             <div className="brand-names">
               <span className="brand-title">Addis Eats</span>
@@ -50,7 +52,11 @@ export function Layout() {
             {isAuthenticated ? (
               <div className="user-session-pill">
                 <span className="user-name" title={user.email}>
-                  👤 {user.name}
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" style={{ verticalAlign: '-2px', marginRight: '5px' }}>
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                    <circle cx="12" cy="7" r="4" />
+                  </svg>
+                  {user.name}
                 </span>
                 <button
                   type="button"

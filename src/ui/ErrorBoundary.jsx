@@ -34,7 +34,13 @@ export class ErrorBoundary extends Component {
 
       return (
         <div className="ui-error-boundary-card" role="alert">
-          <div className="ui-error-icon" aria-hidden="true">⚠️</div>
+          <div className="ui-error-icon" aria-hidden="true">
+            <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="var(--color-berbere)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <circle cx="12" cy="12" r="10" />
+              <line x1="12" y1="8" x2="12" y2="12" />
+              <line x1="12" y1="16" x2="12.01" y2="16" />
+            </svg>
+          </div>
           <h2 className="ui-error-title">Something went wrong</h2>
           <p className="ui-error-message">
             {this.state.error?.message || 'An unexpected rendering error occurred in this view.'}

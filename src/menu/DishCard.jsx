@@ -48,7 +48,11 @@ export function DishCard({ dish }) {
 
         <div className="dish-card-footer">
           <span className="dish-card-time" title="Estimated preparation time">
-            ⏱ {dish.prepTime || '15-20 min'}
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" style={{ verticalAlign: '-1px', marginRight: '4px' }}>
+              <circle cx="12" cy="12" r="10" />
+              <polyline points="12 6 12 12 16 14" />
+            </svg>
+            {dish.prepTime || '15-20 min'}
           </span>
           <Button
             type="button"

@@ -117,7 +117,11 @@ export function Menu() {
       {!loading && error && (
         <div className="menu-error-box" role="alert">
           <span className="error-badge-icon" aria-hidden="true">
-            ⚠️
+            <svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="var(--color-berbere)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z" />
+              <line x1="12" y1="9" x2="12" y2="13" />
+              <line x1="12" y1="17" x2="12.01" y2="17" />
+            </svg>
           </span>
           <h2 className="error-title">Unable to Load Menu</h2>
           <p className="error-desc">
@@ -133,7 +137,12 @@ export function Menu() {
       {!loading && !error && dishes && dishes.length === 0 && (
         <div className="menu-empty-box" role="status">
           <span className="empty-badge-icon" aria-hidden="true">
-            🍲
+            <svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="var(--color-ink-muted)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M12 2v2" />
+              <path d="M4 10a8 8 0 0 1 16 0" />
+              <path d="M2 14h20" />
+              <path d="M20 14v4a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-4" />
+            </svg>
           </span>
           <h2 className="empty-title">No Dishes Found</h2>
           <p className="empty-desc">

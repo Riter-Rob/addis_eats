@@ -39,7 +39,10 @@ export function DishDetail() {
     return (
       <div className="dish-detail-error-card" role="alert">
         <div className="status-emoji" aria-hidden="true">
-          🔍
+          <svg width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="var(--color-ink-muted)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <circle cx="11" cy="11" r="8" />
+            <line x1="21" y1="21" x2="16.65" y2="16.65" />
+          </svg>
         </div>
         <h1 className="dish-detail-error-title">Dish Not Found</h1>
         <p className="dish-detail-error-desc">
@@ -102,7 +105,13 @@ export function DishDetail() {
           <div className="dish-detail-meta">
             <div className="meta-item">
               <span className="meta-label">Est. Preparation</span>
-              <span className="meta-value">⏱ {dish.prepTime || '20 min'}</span>
+              <span className="meta-value">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" style={{ verticalAlign: '-2px', marginRight: '5px' }}>
+                  <circle cx="12" cy="12" r="10" />
+                  <polyline points="12 6 12 12 16 14" />
+                </svg>
+                {dish.prepTime || '20 min'}
+              </span>
             </div>
             <div className="meta-item">
               <span className="meta-label">Category</span>
