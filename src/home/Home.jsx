@@ -15,12 +15,11 @@ export function Home() {
       {/* Hero Section */}
       <section className="hero-section" aria-labelledby="hero-title">
         <div className="hero-content">
-          <span className="hero-eyebrow">Fresh & Sizzling from Addis Ababa</span>
           <h1 id="hero-title" className="hero-heading">
-            Authentic Ethiopian Delicacies Delivered to Your Door
+            Authentic Ethiopian Delicacies <span className="hero-heading-accent">Delivered to Your Door</span>
           </h1>
           <p className="hero-description">
-            From clay pot Shiro Tegabino and rich Doro Wat to sizzling Special Tibs and freshly brewed Jebena coffee. Order across Bole, Kazanchis, Piassa, and beyond.
+            From bubbling clay pot Shiro Tegabino and rich Doro Wat to sizzling Special Tibs and freshly ground berbere stews. Delivered hot across Bole, Kazanchis, Piassa, and beyond.
           </p>
           <div className="hero-actions">
             <Link to="/menu">

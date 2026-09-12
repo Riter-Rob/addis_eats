@@ -1,0 +1,131 @@
+/* ==========================================================================
+   Addis Eats — Design System Tokens & Browser Surfaces ("Mesob & Clay")
+   Crafted following Impeccable Design Language
+   ========================================================================== */
+
+:root {
+  /* --- Brand & Accent Palette --- */
+  --color-berbere: #c23b22;
+  --color-berbere-hover: #a32c16;
+  --color-berbere-dark: #80200e;
+  --color-berbere-soft: rgba(194, 59, 34, 0.09);
+  --color-berbere-glow: rgba(194, 59, 34, 0.25);
+
+  --color-gold: #d97706;
+  --color-gold-hover: #b45309;
+  --color-gold-light: #fef3c7;
+  --color-gold-soft: rgba(217, 119, 6, 0.12);
+
+  --color-rosemary: #235d3a;
+  --color-rosemary-hover: #19462b;
+  --color-rosemary-soft: #eaf5ed;
+  --color-rosemary-border: #a3cfb1;
+
+  /* --- Surfaces & Mineral Grounds --- */
+  --color-bg-base: #fbf9f5;
+  --color-surface: #ffffff;
+  --color-surface-raised: #ffffff;
+  --color-surface-sunken: #f4eee3;
+  --color-surface-hover: #f9f5ed;
+
+  --color-obsidian: #181513;
+  --color-obsidian-surface: #24201d;
+  --color-obsidian-border: #38322e;
+  --color-obsidian-muted: #9e9389;
+
+  /* --- Ink & Typography --- */
+  --color-ink-primary: #1c1815;
+  --color-ink-secondary: #564e45;
+  --color-ink-muted: #8c8175;
+  --color-ink-faint: #b4a89c;
+  --color-ink-on-dark: #fbf9f5;
+
+  /* --- Rules & Hairlines --- */
+  --color-border-warm: #e8ded2;
+  --color-border-light: #f0e8dd;
+  --color-border-focus: #d97706;
+
+  /* --- Typography Families --- */
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-body: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+
+  /* --- Elevation & Shadows (Offset with warm diffuse blur) --- */
+  --shadow-sm: 0 1px 2px rgba(28, 24, 21, 0.04), 0 1px 3px rgba(28, 24, 21, 0.06);
+  --shadow-md: 0 4px 6px -1px rgba(28, 24, 21, 0.06), 0 2px 4px -1px rgba(28, 24, 21, 0.04);
+  --shadow-lg: 0 10px 20px -3px rgba(28, 24, 21, 0.08), 0 4px 6px -2px rgba(28, 24, 21, 0.04);
+  --shadow-xl: 0 20px 25px -5px rgba(28, 24, 21, 0.12), 0 10px 10px -5px rgba(28, 24, 21, 0.04);
+
+  /* --- Transitions --- */
+  --ease-warm: cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-fast: 0.15s var(--ease-warm);
+  --transition-normal: 0.25s var(--ease-warm);
+}
+
+/* --- Base & Reset --- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  color-scheme: light;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--color-ink-primary);
+  background-color: var(--color-bg-base);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ==========================================================================
+   Impeccable Craft Floor: Browser Surfaces
+   ========================================================================== */
+
+/* 1. Custom Text Selection */
+::selection {
+  background-color: #fce8cc;
+  color: #1c1815;
+}
+
+/* 2. Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 9px;
+  height: 9px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg-base);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #d8cebf;
+  border-radius: 9999px;
+  border: 2px solid var(--color-bg-base);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #b5a997;
+}
+
+/* 3. Accessible Focus-Visible */
+:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* 4. Tabular numbers for all prices and quantities */
+.price-tabular,
+[class*="price"],
+[class*="counter"],
+[class*="qty"] {
+  font-variant-numeric: tabular-nums;
+}
