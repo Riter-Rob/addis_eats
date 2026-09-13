@@ -16,7 +16,7 @@ export function Home() {
       <section className="hero-section" aria-labelledby="hero-title">
         <div className="hero-content">
           <h1 id="hero-title" className="hero-heading">
-            Authentic Ethiopian Delicacies <span className="hero-heading-accent">Delivered to Your Door</span>
+            Enkuan dehna Metu <span className="hero-heading-accent">Delivered to Your Door</span>
           </h1>
           <p className="hero-description">
             From bubbling clay pot Shiro Tegabino and rich Doro Wat to sizzling Special Tibs and freshly ground berbere stews. Delivered hot across Bole, Kazanchis, Piassa, and beyond.
