@@ -70,9 +70,6 @@ export function Layout() {
             <Link to="/#specials" className="header-nav-link">
               Specials
             </Link>
-            <Link to="/#about" className="header-nav-link">
-              About
-            </Link>
           </nav>
 
           {/* Right actions: search, cart, auth, mobile toggle */}

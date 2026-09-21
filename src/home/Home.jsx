@@ -33,13 +33,11 @@ export function Home() {
         <div className="hero-organic-inner">
           <div className="hero-organic-content">
             <h1 className="hero-organic-title">
-              Authentic<br />
-              Addis Ababa<br />
-              Flavors
+              Enkuan dehna Metu<br />
+              Delivered to Your Door
             </h1>
             <p className="hero-organic-subtitle">
-              Handcrafted traditional dishes prepared with pure highland ingredients,
-              authentic sun-dried berbere, and fresh local produce across Addis Ababa.
+              From bubbling clay pot Shiro Tegabino and rich Doro Wat to sizzling Special Tibs and freshly ground berbere stews. Delivered hot across Addis Ababa.
             </p>
             <div className="hero-organic-actions">
               <Link to="/menu" className="hero-organic-btn">
