@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useCart } from '../cart/CartContext'
-import { Button } from '../ui/Button'
 
 export function DishCard({ dish }) {
   const { addToCart } = useCart()
@@ -25,12 +24,6 @@ export function DishCard({ dish }) {
             loading="lazy"
             className="dish-card-img"
           />
-          <span className="dish-card-badge">{dish.category}</span>
-          {dish.isVegetarian && (
-            <span className="dish-card-tag-veg" title="Vegetarian / Fasting">
-              Fasting / Veg
-            </span>
-          )}
         </div>
       </Link>
 
@@ -47,22 +40,17 @@ export function DishCard({ dish }) {
         <p className="dish-card-desc">{dish.description}</p>
 
         <div className="dish-card-footer">
-          <span className="dish-card-time" title="Estimated preparation time">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" style={{ verticalAlign: '-1px', marginRight: '4px' }}>
-              <circle cx="12" cy="12" r="10" />
-              <polyline points="12 6 12 12 16 14" />
-            </svg>
+          <span className="dish-card-time">
             {dish.prepTime || '15-20 min'}
           </span>
-          <Button
+          <button
             type="button"
-            variant={justAdded ? 'secondary' : 'primary'}
-            size="sm"
+            className={`dish-card-add-btn${justAdded ? ' dish-card-add-btn--added' : ''}`}
             onClick={handleAdd}
-            ariaLabel={`Add ${dish.name} to order for ${dish.price} Ethiopian Birr`}
+            aria-label={`Add ${dish.name} to order for ${dish.price} Ethiopian Birr`}
           >
-            {justAdded ? 'Added ✓' : 'Add to Order'}
-          </Button>
+            {justAdded ? 'Added' : 'Add to Order'}
+          </button>
         </div>
       </div>
     </article>

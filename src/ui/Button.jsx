@@ -1,6 +1,3 @@
-/**
- * Generic reusable button without business logic.
- */
 export function Button({
   children,
   type = 'button',

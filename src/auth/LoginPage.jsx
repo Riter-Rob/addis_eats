@@ -8,7 +8,6 @@ export function LoginPage() {
   const navigate = useNavigate()
   const location = useLocation()
 
-  // Extract return path or fallback to home
   const from = location.state?.from?.pathname || '/'
 
   const [name, setName] = useState('Abebe Kebede')
@@ -18,7 +17,6 @@ export function LoginPage() {
   const handleSubmit = (e) => {
     e.preventDefault()
     login({ name, phone, email })
-    // Return after signing in
     navigate(from, { replace: true })
   }
 

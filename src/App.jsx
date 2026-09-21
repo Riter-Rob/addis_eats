@@ -14,13 +14,8 @@ import { NotFound } from './pages/NotFound'
 import { Spinner } from './ui/Spinner'
 import './App.css'
 
-// One lazy-loaded route per Days 33-34 requirements
 const Checkout = lazy(() => import('./checkout/Checkout'))
 
-/**
- * Addis Eats Root Application
- * Configures Router, Error Boundary, Auth Provider, and Cart Store.
- */
 export default function App() {
   return (
     <ErrorBoundary>
@@ -28,7 +23,6 @@ export default function App() {
         <CartProvider>
           <BrowserRouter basename={import.meta.env.BASE_URL}>
             <Routes>
-              {/* Nested routes under Layout with header, nav, Outlet, and footer */}
               <Route path="/" element={<Layout />}>
                 <Route index element={<Home />} />
                 <Route path="menu" element={<Menu />} />

@@ -1,9 +1,5 @@
 import { Component } from 'react'
 
-/**
- * Standard React Error Boundary catching unhandled rendering crashes.
- * Provides a clean user-facing error card with retry option.
- */
 export class ErrorBoundary extends Component {
   constructor(props) {
     super(props)
@@ -15,7 +11,6 @@ export class ErrorBoundary extends Component {
   }
 
   componentDidCatch(error, errorInfo) {
-    // Log error details for diagnostics
     console.error('ErrorBoundary caught an error:', error, errorInfo)
   }
 

@@ -1,71 +1,73 @@
----
-name: Addis Eats "Mesob & Clay"
-description: An artisanal Ethiopian culinary design system blending warm earthenware terracotta, fiery berbere vermilion, golden tej amber, and deep volcanic obsidian.
-colors:
-  # Primary Accents
-  berbere-vermilion: "oklch(56% 0.20 32)"       # #c23b22 - Primary brand CTA and highlight
-  berbere-deep: "oklch(46% 0.18 30)"            # #9a2b16 - Hover and active states
-  tej-gold: "oklch(76% 0.16 75)"                # #d97706 - Secondary gold, badges, stars
-  tej-light: "oklch(88% 0.11 82)"               # #fef3c7 - Soft highlight fills
-  highland-rosemary: "oklch(50% 0.12 148)"      # #2d5a3e - Fasting / Vegetarian badge
+# Design System & UI Guide
 
-  # Surfaces & Grounds
-  parchment-ground: "oklch(98% 0.008 75)"       # #fcfaf6 - Warm organic page background
-  surface-card: "oklch(100% 0 0)"               # #ffffff - Pure crisp surface
-  surface-sunken: "oklch(96% 0.012 75)"         # #f5f0e6 - Insets, inputs, secondary panels
-  obsidian-dark: "oklch(18% 0.015 45)"          # #181513 - Volcanic charcoal for footer & contrast
-  obsidian-surface: "oklch(23% 0.015 45)"       # #231f1c - Raised dark panels
+This document outlines the visual design system, color palette, typography hierarchy, and UI patterns for Addis Eats.
 
-  # Text & Ink
-  ink-primary: "oklch(22% 0.02 45)"             # #1c1815 - High-contrast readable dark ink
-  ink-secondary: "oklch(45% 0.02 45)"           # #5a524a - Subtitles, descriptions, captions
-  ink-muted: "oklch(62% 0.015 50)"              # #8e8479 - Meta information and timestamps
-  ink-on-dark: "oklch(96% 0.005 75)"            # #f7f5f2 - Pure legible text on obsidian
-
-  # Rules & Borders
-  border-warm: "oklch(90% 0.018 75)"            # #e8ded2 - Subtle earthenware hairline border
-  border-accent: "oklch(76% 0.16 75 / 0.35)"    # Gold-tinted active rule
-
-typography:
-  display:
-    fontFamily: "'Fraunces', Georgia, serif"
-    fontWeight: 700
-    letterSpacing: "-0.02em"
-  heading:
-    fontFamily: "'Fraunces', Georgia, serif"
-    fontWeight: 600
-    letterSpacing: "-0.015em"
-  body:
-    fontFamily: "'Plus Jakarta Sans', system-ui, -apple-system, sans-serif"
-    fontWeight: 400
-    lineHeight: 1.6
-  ui:
-    fontFamily: "'Plus Jakarta Sans', system-ui, -apple-system, sans-serif"
-    fontWeight: 600
-    letterSpacing: "0.01em"
-  numeral:
-    fontVariantNumeric: "tabular-nums"
-
-rounded:
-  sm: "6px"
-  md: "10px"
-  lg: "16px"
-  pill: "9999px"
-
-spacing:
-  xs: "8px"
-  sm: "16px"
-  md: "24px"
-  lg: "32px"
-  xl: "48px"
-  "2xl": "64px"
 ---
 
-# Design System: Mesob & Clay (Addis Eats)
+## 1. Color Palette
 
-## 1. Creative North Star: "Mesob & Clay"
-Addis Eats honors the physical warmth, hospitality, and sensory textures of Ethiopian culinary tradition:
-- **Warm Earthenware & Volcanic Obsidian:** Replace cold SaaS grays (`#f8fafc`, `#e2e8f0`) with warm mineral parchment grounds and obsidian dark accents.
-- **Berbere & Tej Gold:** Authentic culinary color anchors: deep spiced berbere vermilion for primary action, and golden tej honey wine for awards and ratings.
-- **Editorial Typography:** Headings in **Fraunces** evoke vintage artisanal menus and culinary heritage; interface elements in **Plus Jakarta Sans** ensure effortless readability.
-- **Craft Floor Compliance:** Strict contrast ratios ($\ge 4.5:1$), custom browser selection and scrollbars, zero un-tinted dead grays, and no eyebrow tags or nested cards.
+The interface uses a warm, food-inspired palette rooted in Ethiopian culinary heritage—terracotta, spiced berbere, honey tej amber, and mineral grounds—paired with high-contrast text.
+
+### Brand & Accent Colors
+| Token | Hex | Role | Usage |
+|---|---|---|---|
+| `--color-berbere` | `#c23b22` | Primary Brand Accent | CTAs, active highlights, key links |
+| `--color-berbere-hover` | `#a32c16` | Hover State | Button hover, active link state |
+| `--color-gold` | `#d97706` | Secondary Accent | Focus rings, rating badges, special tags |
+| `--color-gold-light` | `#fef3c7` | Highlight Fill | Badge backgrounds, banner highlights |
+| `--color-rosemary` | `#235d3a` | Dietary / Status Accent | Vegetarian / Fasting badges, positive alerts |
+| `--color-rosemary-soft` | `#eaf5ed` | Soft Green Background | Fasting tag pills |
+
+### Backgrounds & Surfaces
+| Token | Hex | Usage |
+|---|---|---|
+| `--color-bg-base` | `#fbf9f5` | Main page body background (warm mineral parchment) |
+| `--color-surface` | `#ffffff` | Elevated cards, dialogs, dropdowns |
+| `--color-surface-sunken` | `#f4eee3` | Inputs, secondary panels, item rows |
+| `--color-obsidian` | `#181513` | Footer background, dark contrast elements |
+
+### Text & Ink
+| Token | Hex | Usage |
+|---|---|---|
+| `--color-ink-primary` | `#1c1815` | Headings, titles, primary body text (contrast ratio ≥ 7:1) |
+| `--color-ink-secondary` | `#564e45` | Subtitles, descriptions, card summaries |
+| `--color-ink-muted` | `#8c8175` | Captions, helper text, preparation times |
+| `--color-ink-on-dark` | `#fbf9f5` | Text on dark surfaces and primary buttons |
+
+---
+
+## 2. Typography
+
+Two typefaces are loaded from Google Fonts:
+
+1. **Display & Headings:** `Fraunces` (Serif)
+   - Used for page titles, hero headlines, and section headers.
+   - Conveys warmth and artisanal culinary character.
+2. **Body & Interface:** `Plus Jakarta Sans` (Sans-Serif)
+   - Used for body text, navigation, buttons, form inputs, and metadata.
+   - Crisp and legible at small sizes across all screen densities.
+3. **Numerals:** Tabular numbers (`font-variant-numeric: tabular-nums`)
+   - Applied to prices, item counters, and cart subtotals to prevent layout shifts when values update.
+
+---
+
+## 3. Elevation & Radius
+
+### Shadows
+- **Small (`--shadow-sm`):** `0 1px 3px rgba(28, 24, 21, 0.06)` — cards on hover, pills
+- **Medium (`--shadow-md`):** `0 4px 6px -1px rgba(28, 24, 21, 0.06)` — standard dish cards
+- **Large (`--shadow-lg`):** `0 10px 20px -3px rgba(28, 24, 21, 0.08)` — sticky header, modals
+
+### Corner Radii
+- **Input / Button:** `8px`
+- **Card / Container:** `12px` to `16px`
+- **Pills / Badges:** `9999px`
+
+---
+
+## 4. UI Patterns & Accessibility
+
+- **Keyboard Navigation:** All interactive controls (buttons, links, inputs) have a distinct `outline: 2px solid var(--color-gold)` with `outline-offset: 3px` on `:focus-visible`.
+- **Greyscale Accessibility:** Form errors in checkout include both a text description and an icon badge (`[!]`), ensuring errors are distinguishable even if color perception is impaired.
+- **Interactive Feedback:** Dish addition shows immediate inline confirmation ("Added ✓") and updates the cart counter in the header in real time.
+- **Empty & Error States:** Clear messaging with recovery actions (e.g. "Try Again" on network errors, "Clear Filters" when searches yield no matches).

@@ -1,128 +1,111 @@
-# Addis Eats — Food Ordering Frontend for Addis Ababa
+# Addis Eats
 
-A food ordering frontend designed and developed for Addis Ababa, Ethiopia, built to fulfill the **IBT College Canada CodeOps · Module 3 · Day 35 React Mini-Project Brief & Rubric**.
-
-Browse an authentic menu loaded from an API helper, filter by category directly in the URL, view dish ingredients and preparation details on dynamic routes, manage a cart across multiple screens in Ethiopian Birr (ETB), and complete an order via a validated, accessible checkout guarded by user authentication.
+A responsive food ordering web application designed for Addis Ababa, Ethiopia. Addis Eats lets users explore local dishes, filter by category or search term, view detailed ingredient lists, manage a persistent shopping cart in Ethiopian Birr (ETB), and complete orders through a validated checkout flow.
 
 ---
 
-## 🗺️ Route Map & Screen Breakdown
+## Features
 
-| Screen | Route | Dynamic / Guarded | Description |
-|---|---|---|---|
-| **Home** | `/` | Standard | Hero banner, chef's today specials highlight, quick link to menu |
-| **Menu** | `/menu` | URL Param (`?category=...`, `?q=...`) | Fetched dishes, search, category filter in the URL, loading, error, and friendly empty states |
-| **Dish Detail** | `/menu/:id` | Dynamic (`:id`) | Fetches dish by ID with unmount cleanup, ingredients breakdown, quantity selector, add-to-order |
-| **Cart** | `/cart` | Store-driven | Order lines, item controls (`- / +`), line removal, running ETB total with delivery fee |
-| **Checkout** | `/checkout` | Guarded & Lazy-Loaded | Controlled delivery form with touched validation, error summaries, accessible in greyscale, guarded by `<RequireAuth>` |
-| **Login** | `/login` | Standard | Auth session screen; preserves `location.state.from` and returns to checkout after signing in |
-| **Not Found** | `*` | Catch-all | Helpful 404 error screen with route diagnostics and navigation back home |
-
----
-
-## 📚 CodeOps Curriculum Alignment (Days 26 – 34)
-
-| Day Topic | Required Feature | Project Implementation |
-|---|---|---|
-| **Days 26–27** | Composed components, props, keys, conditional rendering | Decomposed single-responsibility components (`DishList`, `DishCard`, `CategoryBar`, `Field`, `CartBadge`) |
-| **Day 28** | State, events, and a controlled form | Fully controlled form in `src/checkout/Checkout.jsx` with input change handlers and touched tracking |
-| **Day 29** | Data fetched in an effect with cleanup on unmount | `src/hooks/useFetch.js` uses `AbortController` to abort in-flight promises when unmounting or deps change |
-| **Day 30** | A custom hook, and context or a store | Reusable `useFetch` and `useDebounce` hooks; `CartContext` order store; `AuthContext` user session |
-| **Day 31** | Nested routes, a dynamic route and a guarded route | `<Layout>` with `<Outlet />`; dynamic route `/menu/:id`; guarded route `/checkout` via `<RequireAuth>` |
-| **Days 33–34** | Validation, an error boundary, and one lazy-loaded route | Accessible validation in `validate.js` + `Field.jsx` (visible in greyscale); `<ErrorBoundary>`; `React.lazy` checkout chunk |
+- **Menu Browsing & Search:** Filter by category or search dish names and ingredients in real time.
+- **URL-Synchronized Filters:** Category and search parameters sync with the URL query string (`?category=Traditional&q=tibs`), making filters shareable and refresh-safe.
+- **Dish Details:** Dynamic route (`/menu/:id`) showcasing ingredients, dietary tags (vegetarian/fasting), estimated preparation times, and quantity selectors.
+- **Persistent Cart:** Order items persist across page reloads via `localStorage`, featuring item quantity controls, item removal, and a clear-cart confirmation modal.
+- **Protected Checkout:** The `/checkout` route is guarded by an authentication wrapper; unauthenticated users are directed to `/login` and returned directly to checkout upon signing in.
+- **Form Validation:** The checkout form tracks field-level touched state and validates Ethiopian mobile phone numbers (`09...`, `07...`, or `+251...`), delivery sub-cities, and street landmarks.
+- **Error Recovery:** Handles edge cases gracefully with a catch-all 404 screen, empty search results states, retry options for simulated network failures, and a top-level React Error Boundary.
+- **Accessible UI:** Includes a skip-to-content link, keyboard focus styling, ARIA status announcements, and high-contrast error states that remain legible in greyscale.
 
 ---
 
-## 📂 Feature-Based Folder Architecture
+## Tech Stack
 
-The codebase is organized strictly **by feature**, rather than an untyped generic components dumping ground:
+- **Framework:** React 19
+- **Routing:** React Router 7 (`BrowserRouter`, nested routes, dynamic parameters, lazy loading)
+- **Tooling & Bundler:** Vite 8
+- **Styling:** Vanilla CSS with custom properties (no external CSS framework)
+- **Icons:** Inline SVG icons for zero external icon library overhead
+
+---
+
+## Project Structure
 
 ```text
 src/
 ├── api/
-│   └── dishesApi.js           # Fetch helpers, abort signal handling, delay, single dish lookup
-├── hooks/
-│   ├── useFetch.js            # Reusable data fetch hook with AbortController cleanup
-│   └── useDebounce.js         # Reusable debounced input hook
-├── ui/
-│   ├── Button.jsx             # Generic design system button (primary, secondary, outline, danger)
-│   ├── Spinner.jsx            # Accessible loading spinner with role="status"
-│   ├── Modal.jsx              # Accessible modal dialog with focus trapping and ESC support
-│   └── ErrorBoundary.jsx      # React error boundary catching render-time errors
-├── cart/
-│   ├── CartContext.jsx        # Order store (cart items, qty modifiers, running ETB total)
-│   ├── CartBadge.jsx          # Live badge in navigation bar
-│   └── CartPage.jsx           # Order lines table, running ETB total, proceed action
-├── menu/
-│   ├── Menu.jsx               # Menu screen reading and updating URL search params
-│   ├── CategoryBar.jsx        # Category navigation tabs
-│   ├── DishList.jsx           # Pure list renderer receiving dishes via props
-│   ├── DishCard.jsx           # Dish preview card with "Add to Order" action
-│   └── DishDetail.jsx         # Dynamic screen for /menu/:id with ingredients and dietary tags
-├── checkout/
-│   ├── Checkout.jsx           # Controlled delivery form, touched tracking, order placement
-│   ├── validate.js            # Pure validation rules (name, Ethiopian phone, sub-city, address)
-│   └── Field.jsx              # Accessible field with label, error text, [!] icon, aria-describedby
+│   └── dishesApi.js           # Mock API service, dish catalog, and lookup helpers
 ├── auth/
-│   ├── AuthContext.jsx        # Session store for sign-in state
-│   ├── RequireAuth.jsx        # Route guard redirecting unauthenticated users to /login
-│   └── LoginPage.jsx          # Sign-in screen redirecting back to target location
+│   ├── AuthContext.jsx        # User session context and local storage persistence
+│   ├── LoginPage.jsx          # Sign-in view preserving return redirect location
+│   └── RequireAuth.jsx        # Protected route wrapper
+├── cart/
+│   ├── CartBadge.jsx          # Live cart count badge in navbar
+│   ├── CartContext.jsx        # Cart state, quantity modifiers, and subtotal calculations
+│   └── CartPage.jsx           # Order summary table and clear-cart dialog
+├── checkout/
+│   ├── Checkout.jsx           # Controlled delivery form with touched-state tracking
+│   ├── Field.jsx              # Accessible form field component with inline error display
+│   └── validate.js            # Pure validation rules for phone, sub-city, and address
 ├── home/
-│   └── Home.jsx               # Landing view with chef's specials highlight
+│   └── Home.jsx               # Landing page with hero banner and today's specials
+├── hooks/
+│   ├── useDebounce.js         # Input debouncing hook
+│   └── useFetch.js            # Fetch wrapper handling loading, errors, and unmount cancellation
 ├── layout/
-│   └── Layout.jsx             # Header, Navigation, CartBadge, Auth status, Outlet, Footer
+│   └── Layout.jsx             # Shell containing header navigation, main outlet, and footer
+├── menu/
+│   ├── CategoryBar.jsx        # Category selection tab bar
+│   ├── DishCard.jsx           # Dish card with instant add-to-cart action
+│   ├── DishDetail.jsx         # Dynamic detail page for single dishes
+│   ├── DishList.jsx           # Grid renderer for dish collections
+│   └── Menu.jsx               # Menu page reading and updating URL query parameters
 ├── pages/
-│   └── NotFound.jsx           # 404 Catch-all route
-├── App.jsx                    # Router, Error Boundary, Auth & Cart providers, Lazy route
-├── App.css                    # Handcrafted, accessible, responsive CSS styling
-└── main.jsx                   # React 19 entry point
+│   └── NotFound.jsx           # 404 error page with navigation back to home
+├── ui/
+│   ├── Button.jsx             # Reusable button supporting variants and loading state
+│   ├── ErrorBoundary.jsx      # Class component catching render errors
+│   ├── Modal.jsx              # Accessible modal dialog rendered via React portal
+│   └── Spinner.jsx            # Loading indicator with accessible status text
+├── App.jsx                    # Root routes and providers configuration
+├── App.css                    # Component and page stylesheets
+├── index.css                  # Design tokens, reset, and base browser styles
+└── main.jsx                   # Application entry point
 ```
 
 ---
 
-## 🎯 State Placement Decisions (Rubric Section 2.2)
-
-- **Selected category**: Stored in the **URL query string** (`useSearchParams`) — bookmarkable, shareable, and survives a page refresh.
-- **Fetched dishes**: Kept local to the components that display them (`Menu` and `DishDetail` via `useFetch`).
-- **The order / cart**: Kept in **`CartContext`** — read and modified across four different screens (Navbar badge, DishCard / DishDetail, Cart page, Checkout summary).
-- **Sign-in session**: Kept in **`AuthContext`** — persistent user session required by `<RequireAuth>` guard.
-- **Checkout form fields**: Kept strictly inside the **`Checkout` component** — isolated form state, touched states, and submit status.
-- **Modal open state**: Kept in the local component controlling it.
-
----
-
-## 🧪 Testing the Six Failure Paths (Rubric Part 3)
-
-1. **Throttle to Slow 3G**: Loading spinners appear immediately with accessible status text; never a blank screen.
-2. **Rename data / Simulated Failure**: The error state displays a friendly error box with a "Try Again" refetch button.
-3. **Filter to an Empty Category**: Selecting a category or search query with zero matches displays a friendly empty state ("No dishes found"), not an error or crash.
-4. **Nonsense URL**: Typing `/some/invalid/path` renders the `NotFound` screen with a clear way back.
-5. **Open `/checkout` signed out**: Unauthenticated users are redirected to `/login` preserving target location in state, and automatically returned to `/checkout` upon signing in.
-6. **Reload on every screen**: Every route (`/`, `/menu`, `/menu/1`, `/cart`, `/checkout`, `/login`, `/unknown`) loads cold from the browser address bar without crashing.
-7. **Accessibility & Greyscale**: Checkout form can be navigated entirely via keyboard (`Tab`, `Space`, `Enter`). All form validation errors include clear text and `[!]` indicator badges so errors remain unmistakably clear with color completely removed.
-
----
-
-## 🚀 Getting Started
+## Local Setup
 
 ### Prerequisites
-- Node.js 18+ installed
+- Node.js 18+ and npm installed
 
 ### Installation & Development
 ```bash
-# Clone the repository
+# Clone repository
 git clone https://github.com/Riter-Rob/addis_eats.git
-cd addis_eats
+cd addis-eats
 
 # Install dependencies
 npm install
 
-# Start development server
+# Start local dev server
 npm run dev
 
-# Run ESLint validation
+# Run linter
 npm run lint
 
 # Build production bundle
 npm run build
 ```
+
+---
+
+## Architecture Notes
+
+### State Management Strategy
+- **Search & Category Filters:** Stored in the URL query string (`useSearchParams`). This keeps navigation history functional and allows users to bookmark or share filtered menu views.
+- **Cart & Authentication:** Managed using React Context (`CartContext` and `AuthContext`) with automatic `localStorage` synchronization.
+- **Form State:** Isolated within the `Checkout` component, storing input values, touched flags, and validation errors locally to prevent unnecessary parent re-renders.
+
+### Performance & Bundle Optimization
+- The `Checkout` view is split and loaded on demand using `React.lazy` and `Suspense`, keeping the initial entry bundle lean.
+- In-flight fetch requests inside `useFetch` utilize `AbortController` to cancel pending responses if the user navigates away before completion.

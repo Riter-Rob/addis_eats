@@ -10,7 +10,6 @@ import { Button } from '../ui/Button'
 export function Menu() {
   const [searchParams, setSearchParams] = useSearchParams()
 
-  // Selected category lives in the URL query string — shareable, survives a refresh
   const selectedCategory = searchParams.get('category') || 'All'
   const searchQuery = searchParams.get('q') || ''
 
@@ -39,7 +38,6 @@ export function Menu() {
     setSearchParams({})
   }
 
-  // Fetch dishes in an effect with unmount cleanup (AbortController)
   const fetchDishesCallback = useCallback(
     ({ signal }) =>
       fetchDishes({
@@ -69,7 +67,6 @@ export function Menu() {
           </p>
         </div>
 
-        {/* Search Input */}
         <div className="menu-search-wrapper">
           <label htmlFor="menu-search-input" className="visually-hidden">
             Search dishes or ingredients
@@ -99,21 +96,18 @@ export function Menu() {
         </div>
       </header>
 
-      {/* Category Filter in the URL */}
       <CategoryBar
         categories={CATEGORIES}
         selectedCategory={selectedCategory}
         onSelectCategory={handleSelectCategory}
       />
 
-      {/* Loading state: never a blank screen */}
       {loading && (
         <div className="menu-status-wrapper">
           <Spinner message="Fetching dishes from Addis Eats kitchen..." size="lg" />
         </div>
       )}
 
-      {/* Error state: shows a useful message with retry */}
       {!loading && error && (
         <div className="menu-error-box" role="alert">
           <span className="error-badge-icon" aria-hidden="true">
@@ -133,7 +127,6 @@ export function Menu() {
         </div>
       )}
 
-      {/* Empty state: friendly note, not an error */}
       {!loading && !error && dishes && dishes.length === 0 && (
         <div className="menu-empty-box" role="status">
           <span className="empty-badge-icon" aria-hidden="true">
@@ -158,7 +151,6 @@ export function Menu() {
         </div>
       )}
 
-      {/* Success: Dish list */}
       {!loading && !error && dishes && dishes.length > 0 && (
         <div className="menu-results-section">
           <div className="menu-results-count">

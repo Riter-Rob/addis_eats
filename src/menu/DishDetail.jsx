@@ -13,7 +13,6 @@ export function DishDetail() {
   const [quantity, setQuantity] = useState(1)
   const [addedMessage, setAddedMessage] = useState(false)
 
-  // Fetch single dish with unmount cleanup
   const fetchSingleDish = useCallback(
     ({ signal }) => fetchDishById(id, { signal }),
     [id]
@@ -83,10 +82,6 @@ export function DishDetail() {
             alt={dish.name}
             className="dish-detail-image"
           />
-          <span className="dish-detail-cat-badge">{dish.category}</span>
-          {dish.isVegetarian && (
-            <span className="dish-detail-veg-badge">Fasting / Veg</span>
-          )}
         </div>
 
         <div className="dish-detail-content">

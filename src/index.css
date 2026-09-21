@@ -1,64 +1,74 @@
-/* ==========================================================================
-   Addis Eats — Design System Tokens & Browser Surfaces ("Mesob & Clay")
-   Crafted following Impeccable Design Language
-   ========================================================================== */
+/* Design System Tokens (Organic Food Template) */
 
 :root {
-  /* --- Brand & Accent Palette --- */
-  --color-berbere: #c23b22;
-  --color-berbere-hover: #a32c16;
-  --color-berbere-dark: #80200e;
-  --color-berbere-soft: rgba(194, 59, 34, 0.09);
-  --color-berbere-glow: rgba(194, 59, 34, 0.25);
+  /* === Organic Brand Palette === */
+  --brand-sage: #dbe7d9;           /* Pale calming sage green (hero & nav background) */
+  --brand-sage-light: #e8efe7;     /* Very soft sage tint */
+  --brand-sage-card: #dce8da;      /* Rounded promo cards background */
+  --brand-forest: #244b2d;         /* Deep earthy forest green (buttons, titles, footer) */
+  --brand-forest-dark: #1b3a22;    /* Darker forest for active/hover */
+  --brand-forest-soft: rgba(36, 75, 45, 0.08);
 
-  --color-gold: #d97706;
-  --color-gold-hover: #b45309;
-  --color-gold-light: #fef3c7;
-  --color-gold-soft: rgba(217, 119, 6, 0.12);
+  /* Semantic compatibility aliases */
+  --brand-green: var(--brand-forest);
+  --brand-green-dark: var(--brand-forest-dark);
+  --brand-green-light: var(--brand-sage-light);
+  --brand-green-bg: var(--brand-sage);
+  --brand-black: #1e3825;
+  --color-white: #ffffff;
 
-  --color-rosemary: #235d3a;
-  --color-rosemary-hover: #19462b;
-  --color-rosemary-soft: #eaf5ed;
-  --color-rosemary-border: #a3cfb1;
-
-  /* --- Surfaces & Mineral Grounds --- */
-  --color-bg-base: #fbf9f5;
+  /* === Page & Surface Colors === */
+  --color-bg-base: #fbfcf9;        /* Warm crisp off-white for body and product list */
   --color-surface: #ffffff;
-  --color-surface-raised: #ffffff;
-  --color-surface-sunken: #f4eee3;
-  --color-surface-hover: #f9f5ed;
+  --color-surface-sunken: #f4f6f2;
+  --color-surface-hover: #edf2eb;
 
-  --color-obsidian: #181513;
-  --color-obsidian-surface: #24201d;
-  --color-obsidian-border: #38322e;
-  --color-obsidian-muted: #9e9389;
+  /* === Ink Colors === */
+  --color-ink-primary: #1e3825;    /* Deep forest charcoal */
+  --color-ink-secondary: #48604f;  /* Medium earthy green */
+  --color-ink-muted: #728a79;      /* Muted sage gray */
+  --color-ink-on-dark: #ffffff;
 
-  /* --- Ink & Typography --- */
-  --color-ink-primary: #1c1815;
-  --color-ink-secondary: #564e45;
-  --color-ink-muted: #8c8175;
-  --color-ink-faint: #b4a89c;
-  --color-ink-on-dark: #fbf9f5;
+  /* === Semantic aliases === */
+  --color-berbere: #244b2d;
+  --color-berbere-hover: #1b3a22;
+  --color-berbere-dark: #132b19;
+  --color-berbere-soft: rgba(36, 75, 45, 0.08);
+  --color-gold: #c98b2c;
+  --color-gold-soft: rgba(201, 139, 44, 0.12);
+  --color-rosemary: #244b2d;
+  --color-rosemary-hover: #1b3a22;
+  --color-rosemary-soft: #eaf2ea;
+  --color-rosemary-border: #bcd1ba;
 
-  /* --- Rules & Hairlines --- */
-  --color-border-warm: #e8ded2;
-  --color-border-light: #f0e8dd;
-  --color-border-focus: #d97706;
+  /* Borders */
+  --color-border-warm: rgba(36, 75, 45, 0.12);
+  --color-border-light: rgba(36, 75, 45, 0.06);
+  --color-border-focus: #244b2d;
+  --color-border-card: rgba(36, 75, 45, 0.08);
 
-  /* --- Typography Families --- */
-  --font-display: 'Fraunces', Georgia, serif;
-  --font-body: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  /* Footer palette */
+  --color-obsidian: #244b2d;
+  --color-obsidian-surface: #1e3e26;
+  --color-obsidian-border: #2d5836;
+  --color-obsidian-muted: rgba(255, 255, 255, 0.7);
 
-  /* --- Elevation & Shadows (Offset with warm diffuse blur) --- */
-  --shadow-sm: 0 1px 2px rgba(28, 24, 21, 0.04), 0 1px 3px rgba(28, 24, 21, 0.06);
-  --shadow-md: 0 4px 6px -1px rgba(28, 24, 21, 0.06), 0 2px 4px -1px rgba(28, 24, 21, 0.04);
-  --shadow-lg: 0 10px 20px -3px rgba(28, 24, 21, 0.08), 0 4px 6px -2px rgba(28, 24, 21, 0.04);
-  --shadow-xl: 0 20px 25px -5px rgba(28, 24, 21, 0.12), 0 10px 10px -5px rgba(28, 24, 21, 0.04);
+  /* === Typography === */
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-body: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 
-  /* --- Transitions --- */
-  --ease-warm: cubic-bezier(0.16, 1, 0.3, 1);
-  --transition-fast: 0.15s var(--ease-warm);
-  --transition-normal: 0.25s var(--ease-warm);
+  /* === Elevation === */
+  --shadow-sm: 0 2px 6px rgba(36, 75, 45, 0.04);
+  --shadow-md: 0 4px 16px rgba(36, 75, 45, 0.06);
+  --shadow-lg: 0 8px 24px rgba(36, 75, 45, 0.08);
+  --shadow-xl: 0 16px 36px rgba(36, 75, 45, 0.10);
+  --shadow-lift: 0 8px 28px rgba(36, 75, 45, 0.12);
+  --shadow-soft: 0 2px 10px rgba(36, 75, 45, 0.05);
+
+  /* === Transitions === */
+  --ease-warm: cubic-bezier(0.22, 1, 0.36, 1);
+  --transition-fast: 0.18s var(--ease-warm);
+  --transition-normal: 0.28s var(--ease-warm);
 }
 
 /* --- Base & Reset --- */
@@ -85,44 +95,22 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* ==========================================================================
-   Impeccable Craft Floor: Browser Surfaces
-   ========================================================================== */
-
-/* 1. Custom Text Selection */
 ::selection {
-  background-color: #fce8cc;
-  color: #1c1815;
+  background-color: var(--brand-forest);
+  color: #ffffff;
 }
 
-/* 2. Custom Scrollbar */
-::-webkit-scrollbar {
-  width: 9px;
-  height: 9px;
-}
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: var(--color-bg-base); }
+::-webkit-scrollbar-thumb { background: #c5d4c3; border-radius: 0; border: 2px solid var(--color-bg-base); }
+::-webkit-scrollbar-thumb:hover { background: #9eb89c; }
 
-::-webkit-scrollbar-track {
-  background: var(--color-bg-base);
-}
-
-::-webkit-scrollbar-thumb {
-  background: #d8cebf;
-  border-radius: 9999px;
-  border: 2px solid var(--color-bg-base);
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #b5a997;
-}
-
-/* 3. Accessible Focus-Visible */
 :focus-visible {
-  outline: 2px solid var(--color-gold);
+  outline: 2px solid var(--brand-forest);
   outline-offset: 3px;
-  border-radius: 4px;
+  border-radius: 0;
 }
 
-/* 4. Tabular numbers for all prices and quantities */
 .price-tabular,
 [class*="price"],
 [class*="counter"],

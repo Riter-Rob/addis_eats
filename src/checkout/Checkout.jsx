@@ -23,7 +23,6 @@ export function Checkout() {
   const { user } = useAuth()
   const errorSummaryId = useId()
 
-  // Checkout owns: form fields and nowhere else
   const [values, setValues] = useState({
     fullName: user?.name || '',
     phone: user?.phone || '',
@@ -37,7 +36,6 @@ export function Checkout() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submittedOrder, setSubmittedOrder] = useState(null)
 
-  // Pure validation
   const errors = validateCheckout(values)
   const isValid = Object.keys(errors).length === 0
 
@@ -54,7 +52,6 @@ export function Checkout() {
   const handleSubmit = (e) => {
     e.preventDefault()
 
-    // Mark all as touched
     const allTouched = {
       fullName: true,
       phone: true,
@@ -65,7 +62,6 @@ export function Checkout() {
     setTouched(allTouched)
 
     if (!isValid) {
-      // Focus first error field for keyboard accessibility
       const firstErrorKey = Object.keys(errors)[0]
       const element = document.getElementById(firstErrorKey)
       if (element) {
@@ -76,7 +72,6 @@ export function Checkout() {
 
     setIsSubmitting(true)
 
-    // Simulate placing order with network delay
     setTimeout(() => {
       const orderId = `AE-${Math.floor(100000 + Math.random() * 900000)}`
       const orderRecord = {
@@ -95,7 +90,6 @@ export function Checkout() {
     }, 800)
   }
 
-  // If order was successfully submitted
   if (submittedOrder) {
     return (
       <section className="order-success-container" aria-labelledby="success-title">
@@ -163,7 +157,6 @@ export function Checkout() {
     )
   }
 
-  // If cart is empty and no order submitted
   if (cart.length === 0) {
     return (
       <section className="checkout-empty-container">
@@ -419,5 +412,4 @@ export function Checkout() {
   )
 }
 
-// Default export for lazy loading: React.lazy(() => import('./checkout/Checkout'))
 export default Checkout

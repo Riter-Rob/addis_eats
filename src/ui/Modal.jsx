@@ -1,10 +1,6 @@
 import { useEffect, useRef } from 'react'
 import { createPortal } from 'react-dom'
 
-/**
- * Reusable modal component rendered into portal.
- * Handles ESC key dismissal, body scroll lock, and accessibility.
- */
 export function Modal({ isOpen, onClose, title, children }) {
   const modalRef = useRef(null)
 

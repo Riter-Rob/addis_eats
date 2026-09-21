@@ -1,13 +1,5 @@
 import { useState, useEffect, useCallback, useRef } from 'react'
 
-/**
- * Reusable custom hook to fetch asynchronous data with cleanup on unmount.
- * Uses AbortController to cancel in-flight requests when dependencies change or unmount.
- *
- * @param {Function} fetchFn - A function that returns a Promise, receiving { signal }
- * @param {Array} deps - Dependency array triggering refetch
- * @returns {{ data: any, loading: boolean, error: Error | null, refetch: Function }}
- */
 export function useFetch(fetchFn, deps = []) {
   const [data, setData] = useState(null)
   const [loading, setLoading] = useState(true)

@@ -1,6 +1,8 @@
+import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useCart } from './CartContext'
 import { Button } from '../ui/Button'
+import { Modal } from '../ui/Modal'
 
 export function CartPage() {
   const {
@@ -16,6 +18,7 @@ export function CartPage() {
   } = useCart()
 
   const navigate = useNavigate()
+  const [isConfirmOpen, setIsConfirmOpen] = useState(false)
 
   if (cart.length === 0) {
     return (
@@ -69,7 +72,7 @@ export function CartPage() {
         <button
           type="button"
           className="cart-clear-btn"
-          onClick={clearCart}
+          onClick={() => setIsConfirmOpen(true)}
           aria-label="Clear all items from cart"
         >
           Clear Cart
@@ -77,7 +80,6 @@ export function CartPage() {
       </div>
 
       <div className="cart-layout-grid">
-        {/* Order lines list */}
         <div className="cart-lines-list" role="list">
           {cart.map((item) => (
             <div key={item.id} className="cart-line-item" role="listitem">
@@ -134,7 +136,6 @@ export function CartPage() {
           ))}
         </div>
 
-        {/* Order Summary & Running Total */}
         <aside className="cart-summary-sidebar" aria-label="Order summary">
           <div className="cart-summary-card">
             <h2 className="cart-summary-title">Order Summary</h2>
@@ -179,6 +180,35 @@ export function CartPage() {
           </div>
         </aside>
       </div>
+
+      <Modal
+        isOpen={isConfirmOpen}
+        onClose={() => setIsConfirmOpen(false)}
+        title="Clear Cart?"
+      >
+        <p style={{ marginBottom: '20px', color: 'var(--color-ink-secondary)' }}>
+          Are you sure you want to remove all {totalItems} {totalItems === 1 ? 'dish' : 'dishes'} from your cart?
+        </p>
+        <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '10px' }}>
+          <Button
+            type="button"
+            variant="outline"
+            onClick={() => setIsConfirmOpen(false)}
+          >
+            Cancel
+          </Button>
+          <Button
+            type="button"
+            variant="danger"
+            onClick={() => {
+              clearCart()
+              setIsConfirmOpen(false)
+            }}
+          >
+            Clear Cart
+          </Button>
+        </div>
+      </Modal>
     </section>
   )
 }

@@ -1,7 +1,3 @@
-/**
- * Controlled input field with accessible labels, touched tracking,
- * and error indicators visible with color removed.
- */
 export function Field({
   label,
   name,
@@ -63,7 +59,6 @@ export function Field({
         </p>
       )}
 
-      {/* Accessible error message visible in greyscale with clear icon and text */}
       {hasError && (
         <div id={errorId} className="field-error-message" role="alert">
           <span className="field-error-icon" aria-hidden="true">

@@ -1,4 +1,7 @@
-// API helper for dishes with simulated network delay, search/category filtering, and AbortSignal support
+// Mock API service for dishes with simulated network latency
+const BASE_PATH = import.meta.env.BASE_URL.endsWith('/')
+  ? import.meta.env.BASE_URL
+  : `${import.meta.env.BASE_URL}/`
 
 export const DISHES_DATA = [
   {
@@ -9,7 +12,7 @@ export const DISHES_DATA = [
     isVegetarian: false,
     isSpecial: true,
     prepTime: '20-25 min',
-    image: 'https://images.unsplash.com/photo-1544025162-d76694265947?w=700&auto=format&fit=crop&q=80',
+    image: `${BASE_PATH}menu-image/Tibse.jpg`,
     description: 'Sautéed tender prime beef chunks with sliced green jalapeño, red onions, minced garlic, and fresh rosemary sprigs. Served sizzling with fresh injera.',
     ingredients: ['Prime Beef Tenderloin', 'Fresh Rosemary', 'Garlic', 'Red Onions', 'Jalapeño Pepper', 'Niter Kibbeh (Spiced Clarified Butter)', 'Mitmita']
   },
@@ -21,7 +24,7 @@ export const DISHES_DATA = [
     isVegetarian: false,
     isSpecial: true,
     prepTime: '30-35 min',
-    image: 'https://images.unsplash.com/photo-1547928576-965415777893?w=700&auto=format&fit=crop&q=80',
+    image: `${BASE_PATH}menu-image/Doro Wot.jpg`,
     description: 'Slow-simmered chicken drumstick in a deep, fragrant berbere stew with sweet caramelized shallots, seasoned butter, and a hard-boiled farm egg.',
     ingredients: ['Free-Range Chicken Drumstick', 'Berbere Chili Blend', 'Boiled Farm Egg', 'Shallots', 'Garlic', 'Ginger', 'Niter Kibbeh']
   },
@@ -33,7 +36,7 @@ export const DISHES_DATA = [
     isVegetarian: true,
     isSpecial: false,
     prepTime: '15-20 min',
-    image: 'https://images.unsplash.com/photo-1589302168068-964664d93dc0?w=700&auto=format&fit=crop&q=80',
+    image: `${BASE_PATH}menu-image/Shiro.jpg`,
     description: 'Roasted chickpea and split-pea flour simmered with minced onions, garlic, and berbere in an earthen clay pot until bubbling hot.',
     ingredients: ['Spiced Chickpea Flour (Shiro)', 'Garlic', 'Red Onion', 'Berbere', 'Fresh Green Chili', 'Injera']
   },
@@ -45,7 +48,7 @@ export const DISHES_DATA = [
     isVegetarian: true,
     isSpecial: true,
     prepTime: '20 min',
-    image: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=700&auto=format&fit=crop&q=80',
+    image: `${BASE_PATH}menu-image/Beyaynetu.jpg`,
     description: 'A colorful royal fasting combination platter served over sourdough injera: Misir Wat (red lentils), Ater Kik (yellow split peas), Gomen (collards), and Atkilt.',
     ingredients: ['Misir Wat (Spiced Red Lentils)', 'Ater Kik (Yellow Split Peas)', 'Gomen (Braised Collards)', 'Atkilt (Cabbage & Carrots)', 'Tomato Salad', 'Injera']
   },
@@ -57,7 +60,7 @@ export const DISHES_DATA = [
     isVegetarian: false,
     isSpecial: true,
     prepTime: '15-20 min',
-    image: 'https://images.unsplash.com/photo-1544025162-d76694265947?w=700&auto=format&fit=crop&q=80',
+    image: `${BASE_PATH}menu-image/Kitfo.jpg`,
     description: 'Freshly minced lean beef infused with aromatic niter kibbeh (clarified butter) and fiery mitmita chili. Served leb-leb (gently warmed) with ayib cottage cheese and gomen.',
     ingredients: ['Finely Minced Lean Beef', 'Niter Kibbeh', 'Mitmita Chili', 'Cardamom (Korerima)', 'Ayib (Herbed Cottage Cheese)', 'Kocho / Injera']
   },
@@ -117,7 +120,7 @@ export const DISHES_DATA = [
     isVegetarian: true,
     isSpecial: true,
     prepTime: '10 min',
-    image: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=700&auto=format&fit=crop&q=80',
+    image: `${BASE_PATH}menu-image/Buna.jpg`,
     description: 'Freshly roasted Yirgacheffe Arabica beans brewed in a traditional black clay jebena, infused with a sprig of fresh Rue (Tena Adam) and served with fresh popcorn.',
     ingredients: ['Single-Origin Yirgacheffe Beans', 'Spring Water', 'Fresh Tena Adam (Rue)', 'Roasted Popcorn Side']
   }
@@ -161,9 +164,6 @@ export function fetchDishes({ category = 'All', search = '', signal } = {}) {
   })
 }
 
-/**
- * Fetch a single dish by its ID.
- */
 export function fetchDishById(id, { signal } = {}) {
   return new Promise((resolve, reject) => {
     const timerId = setTimeout(() => {
@@ -185,9 +185,6 @@ export function fetchDishById(id, { signal } = {}) {
   })
 }
 
-/**
- * Fetch today's featured chef specials.
- */
 export function fetchSpecials({ signal } = {}) {
   return new Promise((resolve, reject) => {
     const timerId = setTimeout(() => {
